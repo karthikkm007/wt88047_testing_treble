@@ -70,16 +70,6 @@ TARGET_HW_DISK_ENCRYPTION := true
 TARGET_LEGACY_HW_DISK_ENCRYPTION := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
-# Deodex
-ifeq ($(HOST_OS),linux)
-    ifneq ($(TARGET_BUILD_VARIANT),eng)
-        ifeq ($(WITH_DEXPREOPT),)
-            WITH_DEXPREOPT := true
-            WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
-        endif
-    endif
-endif
-
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
@@ -126,10 +116,6 @@ BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET     := 0x02000000
-
-# Lights
-BOARD_LIGHTS_VARIANT := aw2013
-TARGET_PROVIDES_LIBLIGHT := true
 
 # Lineage HW
 BOARD_HARDWARE_CLASS += hardware/lineage/lineagehw
@@ -191,14 +177,6 @@ BOARD_SEPOLICY_DIRS += \
 
 #include device/qcom/sepolicy/sepolicy.mk
 #include device/qcom/sepolicy/legacy-sepolicy.mk
-
-# Shims
-#TARGET_LD_SHIM_LIBS := \
-#    /vendor/bin/mm-qcamera-daemon|libshim_camera.so \
-#    /vendor/lib/libflp.so|libshims_flp.so \
-#    /vendor/lib/libizat_core.so|libshims_get_process_name.so \
-#    /vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so \
-#    /vendor/lib/lib-imsvt.so|libshims_ims.so
 
 # Wlan
 BOARD_HAS_QCOM_WLAN := true
